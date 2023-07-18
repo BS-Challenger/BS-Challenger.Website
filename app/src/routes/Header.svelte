@@ -1,9 +1,3 @@
-<script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
-</script>
-
 <header>
 	<nav>
 		<div class="header">
@@ -32,7 +26,7 @@
 		margin: 5px;
 		flex-shrink: 0;
 		border-radius: 20px;
-		border: 4px solid var(--main-main-caa-8-f-5, #CAA8F5);
+		border: 4px solid #CAA8F5;
 		background: url("/favicon.png"), lightgray 50% / cover no-repeat;
 
 	}
@@ -50,6 +44,7 @@
 		border: 8px solid #592E83;
 		background: linear-gradient(90deg, #9984D4 0%, #CAA8F5 100%);
 		box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+		transition: transform 300ms linear;
 	}
 
 	nav {

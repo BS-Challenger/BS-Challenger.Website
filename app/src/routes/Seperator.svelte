@@ -1,6 +1,4 @@
-<seperator>
-
-</seperator>
+<seperator/>
 
 <style>
     seperator {
