@@ -1,5 +1,16 @@
 <script>
 	import '../styles.css';
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+
+	onMount(async () => {
+		const url = $page.url;
+		document.cookie = "code=" + url.searchParams.get('code') + "; SameSite=None; Secure";
+
+		return {
+			url
+		};
+	});
 </script>
 
 <svelte:head>
@@ -11,7 +22,7 @@
 	<p class="authText">
 		Click Authorize to login to Beat Leader
 	</p>
-	<button class="authButton">
+	<button class="authButton" on:click={()=>window.open("https://api.beatleader.xyz/oauth2/authorize?client_id=BSChallengerClientID&response_type=code&redirect_uri=http://localhost:8080/beatleader-callback&scope=profile",'_blank')}>
 		Authorize
 	</button>
 </div>
@@ -60,5 +71,13 @@
 		font-style: normal;
 		font-weight: 700;
 		line-height: normal;
+		transition-duration: 0.2s;
+	}
+
+	.authButton:hover {
+		background: #d79c88;
+		transition-duration: 0.2s;
+		cursor: pointer;
+		transform: rotateX(15deg);
 	}
 </style>
