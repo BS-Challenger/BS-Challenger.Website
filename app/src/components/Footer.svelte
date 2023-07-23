@@ -9,7 +9,7 @@
                 Github
             </a>
             <Seperator/>
-            <a href="/" class="footerItem">
+            <a href="/app/static" class="footerItem">
                 API
             </a>
             <Seperator/>
@@ -17,7 +17,7 @@
                 Support
             </a>
             <Seperator/>
-            <a href="/"  class="footerItem">
+            <a href="/app/static" class="footerItem">
                 Patreon
             </a>
             <Seperator/>

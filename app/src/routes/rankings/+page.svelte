@@ -1,12 +1,14 @@
 <script>
     let rankings = [
         {
+            id: 1,
             name: "Ranked Saber",
             icon: "https://cdn.discordapp.com/attachments/1128488966665015307/1132486634936475728/rs.png",
             activeUsers: 0,
             weeklyScores: 0
         },
         {
+            id: 2,
             name: "Tech Saber",
             icon: "https://cdn.discordapp.com/icons/1077667009996800131/0a8f79277b89595cccc3d034bbc13bf8.webp?size=96",
             activeUsers: 0,
@@ -31,7 +33,7 @@
     </div>
     <div class="rankingsContainer">
         {#each rankings as ranking}
-            <div class="ranking">
+            <button class="ranking" on:click={()=>window.location='/ranking/' + ranking.id}>
                 <img class="rankingImg" src="{ranking.icon}" />
                 <p class="rankingName">{ranking.name}</p>
                 <div class="textsContainer">
@@ -44,7 +46,7 @@
                         <div class="textSeperator"/>
                     </div>
                 </div>
-            </div>
+            </button>
         {/each}
     </div>
 </div>
@@ -108,6 +110,7 @@
     }
 
     .ranking {
+        border: none;
         min-width: 350px;
         width: 100%;
         height: 60px;
@@ -120,7 +123,13 @@
         border-radius: 19px;
         background: #535353;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        transition-duration: 0.2s;
+    }
 
+    .ranking:hover {
+        margin-left: 20px;
+        transition-duration: 0.2s;
+        cursor: pointer;
     }
 
     .rankingImg {

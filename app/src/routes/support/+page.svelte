@@ -26,18 +26,6 @@
         box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
     }
 
-    .authorizedText {
-        color: #FFF;
-        text-align: center;
-        font-family: Heebo;
-        font-size: 50px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        margin: 0px;
-        align-self: center;
-    }
-
     .supportSubText {
         color: #FFF;
         text-align: center;
