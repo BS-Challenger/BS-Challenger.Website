@@ -11,6 +11,15 @@
 			url
 		};
 	});
+	const debug = true;
+	let targetURL = "";
+	if(!debug) {
+		targetURL = "https://bschallenger.xyz"
+	}
+	else
+	{
+		targetURL = "http://localhost:8080"
+	}
 </script>
 
 <svelte:head>
@@ -22,7 +31,7 @@
 	<p class="authText">
 		Click Authorize to login to Beat Leader
 	</p>
-	<button class="authButton" on:click={()=>window.open("https://api.beatleader.xyz/oauth2/authorize?client_id=BSChallengerClientID&response_type=code&redirect_uri=http://localhost:8080/beatleader-callback&scope=profile",'_blank')}>
+	<button class="authButton" on:click={()=>window.open("https://api.beatleader.xyz/oauth2/authorize?client_id=BSChallengerClientID&response_type=code&redirect_uri=" + targetURL + "/beatleader-callback&scope=profile",'_blank')}>
 		Authorize
 	</button>
 </div>

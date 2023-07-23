@@ -13,7 +13,7 @@
                 API
             </a>
             <Seperator/>
-            <a href="/" class="footerItem">
+            <a href="/support" class="footerItem">
                 Support
             </a>
             <Seperator/>
@@ -29,7 +29,7 @@
 </footer>
 
 <style>
-    p, a {
+    a {
         color: #FFF;
         font-family: Montserrat Alternates;
         font-size: 35px;
