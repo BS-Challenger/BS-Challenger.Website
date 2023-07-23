@@ -26,9 +26,6 @@
 		margin: 5px;
 		flex-shrink: 0;
 		border-radius: 20px;
-		border: 4px solid #CAA8F5;
-		background: url("/favicon.png"), lightgray 50% / cover no-repeat;
-
 	}
 
 	.header {
