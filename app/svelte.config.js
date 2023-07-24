@@ -11,7 +11,10 @@ const config = {
 			fallback: undefined,
 			precompress: false,
 			strict: true
-		})
+		}),
+		prerender: {
+			entries: ['/ranking/1', '/level/1/1', '/beatleader-callback', '/blauth', '/rankings']
+		}
 	}
 };
 
