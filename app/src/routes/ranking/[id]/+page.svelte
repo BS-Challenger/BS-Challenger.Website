@@ -1,5 +1,5 @@
 <script>
-    import LevelIcon from "../../../components/LevelIcon.svelte";
+    import LevelIcon from "$lib/components/LevelIcon.svelte";
 
     let levels = [
         {

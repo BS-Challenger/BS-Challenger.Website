@@ -3,7 +3,6 @@
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
 	import {onMount} from "svelte";
 
-	console.log('hi');
 	onMount(async () => {
 		window.location = '/rankings'
 	});
