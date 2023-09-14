@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import '../styles/styles.css';
+
+const urlParams = new URLSearchParams(Astro.url.search);
+const code = urlParams.get('code');
+
+const response = await fetch("http://localhost:8081/login", {
+    method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        beatLeaderToken: code
+    }),
+}).then(res => res.json());
+if(!response.token)
+{
+    console.log(response);
+}
+else {
+    Astro.cookies.set("token", response.token);
+
+    console.log(response);
+    const user = await fetch("http://localhost:8081/identity", {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Authorization": "Bearer " + response.token
+        }
+    })
+
+    if (user.status == 200) {
+        const info = await user.json();
+        const id = info.id;
+        console.log("New login from " + JSON.stringify(info));
+
+        Astro.url = "/";
+    }
+}
+---
+
+<Layout title="Authenticated">
+    <main>
+    </main>
+</Layout>
+
+<style>
+</style>

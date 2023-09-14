@@ -1,0 +1,89 @@
+---
+const { color, label, value } = Astro.props;
+---
+
+<div class="container">
+    <p class="label">{label}</p>
+    <div class="valueContainer">
+        <p class="value">{value}</p>
+        <div class="valueUnderline"/>
+    </div>
+</div>
+
+<style define:vars={{color}}>
+    @media screen and (min-width: 1150px) {
+        .container {
+            width: 145px;
+            height: 42px;
+            border-radius: 9px;
+            background: var(--color);
+
+            margin-top: auto;
+            margin-bottom: auto;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            align-content: center;
+            gap: 10px;
+        }
+
+        .label {
+            color: #FFF;
+            font-family: Lato;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            padding-left: 5px;
+            text-align: center;
+
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .valueContainer {
+            height: 25px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .value {
+            display: flex;
+            color: #FFF;
+            font-family: Lato;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin: 0px;
+            height: 15px;
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .valueUnderline {
+            display: flex;
+            width: 25px;
+            height: 5px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.56);
+        }
+    }
+
+    @media screen and (max-width: 1150px) {
+        .value {
+            display: none;
+        }
+
+        .label {
+            display: none;
+        }
+    }
+</style>

@@ -1,0 +1,78 @@
+---
+const { ranking } = Astro.props;
+import StatCard from "./StatCard.astro";---
+
+<button class="container">
+    <div class="leftItems">
+        <img class="rankingImage" src={ranking.iconURL} transition:name={ranking.identifier} />
+        <p class="rankingName">{ranking.name}</p>
+    </div>
+    <div class="rightItems">
+        <StatCard color="#B27C66" label="Active Users" value="20"/>
+        <StatCard color="#9984D4" label="Weekly Scans" value="45"/>
+    </div>
+</button>
+
+<style>
+    .container {
+        width: 90%;
+        height: 60px;
+        border-radius: 10px;
+        background: #252525;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-content: center;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        border: none;
+
+        transition-duration: 0.2s;
+    }
+
+    .container:hover {
+        padding-left: 10px;
+        background-color: #212121;
+        transition-duration: 0.2s;
+        cursor: pointer;
+    }
+
+    .leftItems {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: left;
+        padding-left: 5px;
+    }
+
+    .rightItems {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: left;
+        padding-right: 10px;
+
+        margin-left: auto;
+    }
+
+    .rankingImage {
+        margin: auto;
+        display: flex;
+        height: 50px;
+        width: 50px;
+        -webkit-filter: drop-shadow(0px 4px 3px rgba(0, 0, 0, 0.5));
+        filter: drop-shadow(0px 4px 3px rgba(0, 0, 0, 0.5));
+        border-radius: 10px;
+    }
+
+    .rankingName {
+        color: #FFF;
+        font-family: Lato;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin: auto;
+    }
+</style>

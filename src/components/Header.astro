@@ -1,0 +1,110 @@
+---
+import {User} from "../models/User";
+
+let user : User = {beatLeaderId: "", username: "", avatar: ""}
+if(Astro.cookies.has("token")) {
+    const token = Astro.cookies.get("token")
+
+    const userRes = await fetch("http://localhost:8081/identity", {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    })
+
+    if (userRes.status == 200) {
+        const info = await userRes.json();
+        const id = info.id;
+        console.log("New login from " + JSON.stringify(info));
+        user = {
+            avatar: info.avatar, beatLeaderId: id, username: info.username
+        };
+
+        console.log(user.avatar);
+    }
+}
+
+let isLoggedIn = user.beatLeaderId != "";
+let imageUrl = isLoggedIn ? user.avatar : "/blLogo.png";
+---
+
+<header>
+    <nav>
+        <img class="headerImage" src="/logo.png" />
+        <div class="titleContainer">
+            <span style="color:#9984D4">BS</span>
+            <span style="color:#CCCCCC">Challenger</span>
+        </div>
+        <img class="userImage" src={imageUrl} />
+    </nav>
+</header>
+
+<script is:inline define:vars={{ user }}>
+
+    console.log(user.avatar);
+    // Find all buttons with the `alert` class on the page.
+    const buttons = document.querySelectorAll('img.userImage');
+    // Handle clicks on each button.
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            let isLoggedIn = user.beatLeaderId != "";
+            console.log(user);
+            if(isLoggedIn)
+            {
+                window.location = "/profile";
+            }
+            else
+            {
+                window.location.href = "https://api.beatleader.xyz/oauth2/authorize?client_id=BSChallengerClientID&response_type=code&redirect_uri=http://localhost:8080/beatleader-callback&scope=profile";
+            }
+        });
+    });
+</script>
+
+<style>
+    .headerImage {
+        width: 54px;
+        height: 54px;
+        margin: 10px 0px 0px 5px;
+    }
+
+    .userImage {
+        width: 64px;
+        height: 64px;
+        margin-left: auto;
+        margin-right: 5px;
+        margin-top: 5px;
+        border-radius: 10px;
+        transition-duration: 0.2s;
+    }
+
+    .userImage:hover {
+        filter: brightness(0.4);
+        transition-duration: 0.2s;
+    }
+
+    header {
+        width: 100%;
+        height: 75px;
+        background-color: #0F0F0F;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+    }
+
+    span {
+        font-size: 30px;
+        font-family: 'Lato', sans-serif;
+        line-height: 65px;
+        vertical-align: middle;
+    }
+
+    .titleContainer {
+        padding-left: 10px;
+        height: 75px;
+    }
+</style>
