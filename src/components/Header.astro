@@ -3,9 +3,10 @@ import {User} from "../models/User";
 
 let user : User = {beatLeaderId: "", username: "", avatar: ""}
 if(Astro.cookies.has("token")) {
-    const token = Astro.cookies.get("token")
+    const token = Astro.cookies.get("token");
+    console.log(token);
 
-    const userRes = await fetch("http://localhost:8081/identity", {
+    const userRes = await fetch("https://bschallenger.xyz/api/identity", {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
