@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import LevelCard from "../../components/LevelCard.astro";
+import LargeLevelCard from "../../components/LargeLevelCard.astro";
 const { ranking } = Astro.params;
 
 let response = await fetch("https://bschallenger.xyz/api/rankings");
@@ -15,10 +16,89 @@ console.log(rankingObj.identifier);
     <main>
         <div class="rankingsContainer">
             <div class="infoContainer">
-                <img class="rankingImage" src={rankingObj.iconURL} transition:name={`${rankingObj.identifier}`}/>
-                <p class="rankingName">{rankingObj.name}</p>
+                <div class="leftInfo">
+                    <img class="rankingImage" src={rankingObj.iconURL} transition:name={`${rankingObj.identifier}`}/>
+                    <p class="rankingName">{rankingObj.name}</p>
+                </div>
+                <div class="rightInfo">
+                    <p class="currentLevel">Your Level</p>
+                    <LargeLevelCard level={{
+                        levelNumber: 1,
+                        iconURL: '/Default.png',
+                        color0 : '#249D76',
+                        color1 : '#217a5e'
+                    }} />
+                </div>
+            </div>
+            <div class="levelContainer">
+                <LevelCard level={{
+                    levelNumber: 1,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
                 <LevelCard level={{
                     levelNumber: 2,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 3,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 4,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 5,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 6,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 7,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 8,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 9,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 10,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 11,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
+                <LevelCard level={{
+                    levelNumber: 12,
                     iconURL: '/Default.png',
                     color0 : '#249D76',
                     color1 : '#217a5e'
@@ -61,6 +141,10 @@ console.log(rankingObj.identifier);
         margin-right: auto;
     }
 
+    .leftInfo {
+        display: flex;
+    }
+
     .rankingImage {
         display: flex;
         width: 210px;
@@ -82,5 +166,33 @@ console.log(rankingObj.identifier);
         font-weight: 700;
         line-height: normal;
         margin: 20px auto auto 20px;
+    }
+
+    .rightInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        margin: auto 50px auto auto;
+    }
+
+    .currentLevel {
+        color: #FFF;
+        text-align: center;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-family: Lato, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+
+        margin: 0px;
+    }
+
+    .levelContainer {
+        display: grid;
+        grid-template-columns: 90px 90px  90px 90px 90px  90px 90px 90px  90px;
+        gap: 20px;
+        margin: 15px 40px 40px;
     }
 </style>
