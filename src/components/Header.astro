@@ -32,11 +32,13 @@ let imageUrl = isLoggedIn ? user.avatar : "/blLogo.png";
 
 <header>
     <nav>
-        <img class="headerImage" src="/logo.png" />
-        <div class="titleContainer">
-            <span style="color:#9984D4">BS</span>
-            <span style="color:#CCCCCC">Challenger</span>
-        </div>
+        <a class="logoContainer" href="/">
+            <img class="headerImage" src="/logo.png" />
+            <div class="titleContainer">
+                <span style="color:#9984D4">BS</span>
+                <span style="color:#CCCCCC">Challenger</span>
+            </div>
+        </a>
         <img class="userImage" src={imageUrl} />
     </nav>
 </header>
@@ -64,6 +66,12 @@ let imageUrl = isLoggedIn ? user.avatar : "/blLogo.png";
 </script>
 
 <style>
+    .logoContainer
+    {
+        display: flex;
+        color: transparent;
+    }
+
     .headerImage {
         width: 54px;
         height: 54px;
@@ -89,6 +97,7 @@ let imageUrl = isLoggedIn ? user.avatar : "/blLogo.png";
         width: 100%;
         height: 75px;
         background-color: #0F0F0F;
+        margin: 0px;
     }
 
     nav {
