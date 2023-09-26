@@ -1,19 +1,28 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import LevelCard from "../../components/LevelCard.astro";
 const { ranking } = Astro.params;
 
-let response = await fetch("https://api.bschallenger.xyz/rankings");
+let response = await fetch("https://bschallenger.xyz/api/rankings");
 let rankings = await response.json();
 
 let rankingObj = rankings.find(r => r.identifier == ranking);
+
+console.log(rankingObj.identifier);
 ---
 
 <Layout title={rankingObj.name}>
     <main>
         <div class="rankingsContainer">
             <div class="infoContainer">
-                <img class="rankingImage" src={rankingObj.iconURL} transition:name={ranking.identifier}/>
+                <img class="rankingImage" src={rankingObj.iconURL} transition:name={`${rankingObj.identifier}`}/>
                 <p class="rankingName">{rankingObj.name}</p>
+                <LevelCard level={{
+                    levelNumber: 2,
+                    iconURL: '/Default.png',
+                    color0 : '#249D76',
+                    color1 : '#217a5e'
+                }} />
             </div>
         </div>
     </main>
@@ -46,6 +55,7 @@ let rankingObj = rankings.find(r => r.identifier == ranking);
 
         border-radius: 15px;
         background: #1B1B1B;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
         margin-left: auto;
         margin-right: auto;

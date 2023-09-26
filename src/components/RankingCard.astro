@@ -1,10 +1,11 @@
 ---
 const { ranking } = Astro.props;
-import StatCard from "./StatCard.astro";---
+import StatCard from "./StatCard.astro";
+---
 
 <button class="container">
     <div class="leftItems">
-        <img class="rankingImage" src={ranking.iconURL} transition:name={ranking.identifier} />
+        <img class="rankingImage" src={ranking.iconURL} transition:name={`${ranking.identifier}`} client:load />
         <p class="rankingName">{ranking.name}</p>
     </div>
     <div class="rightItems">
