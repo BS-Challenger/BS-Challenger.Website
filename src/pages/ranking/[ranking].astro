@@ -191,7 +191,7 @@ console.log(rankingObj.identifier);
 
     .levelContainer {
         display: grid;
-        grid-template-columns: 90px 90px  90px 90px 90px 90px 90px 90px 90px;
+        grid-template-columns: repeat( auto-fit, minmax(90px, 1fr) );
         gap: 15px;
         margin: 15px 55px 55px;
     }
