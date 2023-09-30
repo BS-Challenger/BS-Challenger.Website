@@ -117,7 +117,7 @@ console.log(rankingObj.identifier);
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         min-width: 300px;
-        width: 58%;
+        width: min(90%, 900px);
         height: 75%;
         background-color: #151515;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -132,7 +132,8 @@ console.log(rankingObj.identifier);
 
         margin-top: 15px;
         width: 97%;
-        height: 200px;
+        height: fit-content;
+        padding-bottom: 15px;
 
         border-radius: 15px;
         background: #1B1B1B;
@@ -144,11 +145,13 @@ console.log(rankingObj.identifier);
 
     .leftInfo {
         display: flex;
+        width: max(50%, 500px);
+        transition-duration: 0.2s;
     }
 
     .rankingImage {
         display: flex;
-        height: 90%;
+        width: min(33%, 200px);
         border-radius: 20px;
 
         margin-top: 10px;
@@ -164,15 +167,16 @@ console.log(rankingObj.identifier);
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-        margin: 20px auto auto 20px;
+        margin: 20px 0px auto 20px;
     }
 
     .rightInfo {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
+        transition-duration: 0.2s;
 
-        margin: auto 50px auto auto;
+        margin: auto auto auto auto;
     }
 
     .currentLevel {
@@ -188,27 +192,30 @@ console.log(rankingObj.identifier);
         margin: 0px;
     }
 
-    @media screen and (min-width: 1150px) {
+    @media screen and (min-width: 650px) {
         .rankingName
         {
             font-size: 40px;
+            transition-duration: 0.2s;
         }
     }
 
-    @media screen and (max-width: 1150px) {
+    @media screen and (max-width: 650px) {
         .rightInfo {
             display: none;
+            transition-duration: 0.2s;
         }
         .rankingName
         {
-            font-size: 25px;
+            font-size: 30px;
+            transition-duration: 0.2s;
         }
     }
 
     .levelContainer {
         display: grid;
         grid-template-columns: repeat( auto-fill, minmax(90px, 1fr) );
-        gap: 5px;
-        margin: 15px min(2%, 15px) 0px min(2%, 15px);
+        gap: 15px 5px;
+        margin: 15px min(3%, 15px) 0px min(3%, 15px);
     }
 </style>
