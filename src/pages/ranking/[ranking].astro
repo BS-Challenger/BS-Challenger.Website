@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import LevelCard from "../../components/LevelCard.astro";
 import LargeLevelCard from "../../components/LargeLevelCard.astro";
+import LevelInfo from "../../components/LevelInfo.astro";
 const { ranking } = Astro.params;
 
 let response = await fetch("https://bschallenger.xyz/api/rankings");
@@ -116,7 +117,7 @@ console.log(rankingObj.identifier);
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         min-width: 300px;
-        width: 55%;
+        width: 58%;
         height: 75%;
         background-color: #151515;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -131,7 +132,7 @@ console.log(rankingObj.identifier);
 
         margin-top: 15px;
         width: 97%;
-        height: 240px;
+        height: 200px;
 
         border-radius: 15px;
         background: #1B1B1B;
@@ -147,13 +148,12 @@ console.log(rankingObj.identifier);
 
     .rankingImage {
         display: flex;
-        width: 210px;
-        height: 210px;
+        height: 90%;
         border-radius: 20px;
 
-        margin-top: auto;
+        margin-top: 10px;
         margin-bottom: auto;
-        margin-left: 15px;
+        margin-left: 10px;
     }
 
     .rankingName {
@@ -161,7 +161,6 @@ console.log(rankingObj.identifier);
         text-align: center;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         font-family: Lato, sans-serif;
-        font-size: 50px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -189,10 +188,27 @@ console.log(rankingObj.identifier);
         margin: 0px;
     }
 
+    @media screen and (min-width: 1150px) {
+        .rankingName
+        {
+            font-size: 40px;
+        }
+    }
+
+    @media screen and (max-width: 1150px) {
+        .rightInfo {
+            display: none;
+        }
+        .rankingName
+        {
+            font-size: 25px;
+        }
+    }
+
     .levelContainer {
         display: grid;
-        grid-template-columns: repeat( auto-fit, minmax(90px, 1fr) );
-        gap: 15px;
-        margin: 15px 55px 55px;
+        grid-template-columns: repeat( auto-fill, minmax(90px, 1fr) );
+        gap: 5px;
+        margin: 15px min(2%, 15px) 0px min(2%, 15px);
     }
 </style>
