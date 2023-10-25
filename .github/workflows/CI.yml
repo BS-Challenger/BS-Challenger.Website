@@ -31,7 +31,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script_stop: true
           script: |
-            cd "/var/www/"
+            cd "/home"
             cd "BSChallenger.Website"
             astro build
             pm2 delete website -s
