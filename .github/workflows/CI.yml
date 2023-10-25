@@ -20,6 +20,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSHKEY }}
+	passphrase: ${{ secrets.PASSPHRASE }}
         rm: true
         source: "."
         target: "/home/BSChallenger.Website"
@@ -30,6 +31,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSHKEY }}
+	passphrase: ${{ secrets.PASSPHRASE }}
         script_stop: true
         script: |
           cd "/var/www/"
