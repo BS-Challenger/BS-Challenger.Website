@@ -33,7 +33,7 @@ jobs:
           script: |
             cd "/home"
             cd "BSChallenger.Website"
-	    npm i
+            npm i
             astro build
             pm2 delete website -s
             NODE_ENV=production pm2 start --name <app name> npm -- start
