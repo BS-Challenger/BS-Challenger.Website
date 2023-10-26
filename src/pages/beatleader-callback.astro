@@ -22,7 +22,7 @@ if(!response.token)
     console.log(response);
 }
 else {
-    Astro.cookies.set("token", response.token);
+    document.cookie = "token=" + response.token;
 
     console.log(response);
     const user = await fetch("https://bschallenger.xyz/apiidentity", {
@@ -39,7 +39,7 @@ else {
         const id = info.id;
         console.log("New login from " + JSON.stringify(info));
 
-        Astro.url = "/";
+        document.location = "/"
     }
 }
 ---
