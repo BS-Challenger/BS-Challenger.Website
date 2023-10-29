@@ -15,7 +15,7 @@ import '../styles/styles.css';
 <script>
     const urlParams= (new URL(document.location)).searchParams;
     const code = urlParams.get('code');
-
+    console.log(encodeURIComponent(document.location.toString().split("?")[0]));
     const response = await fetch("https://bschallenger.xyz/api/login", {
         method: "POST",
         mode: "cors",
@@ -24,7 +24,8 @@ import '../styles/styles.css';
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            beatLeaderToken: code
+            beatLeaderToken: code,
+            redirectURL: encodeURIComponent(document.location.toString().split("?")[0])
         }),
     }).then(res => res.json());
 
