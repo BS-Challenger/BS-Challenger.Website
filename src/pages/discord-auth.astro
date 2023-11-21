@@ -8,7 +8,7 @@ const code = urlParams.get('code');
 
 const token = Astro.cookies.get("token");
 
-const userRes = await fetch("http://localhost:8081/discord-auth", {
+const userRes = await fetch("https://bschallenger.xyz/api/discord-auth", {
     method: "POST",
     mode: "cors",
     cache: "no-cache",
@@ -18,7 +18,7 @@ const userRes = await fetch("http://localhost:8081/discord-auth", {
     },
     body: JSON.stringify({
         discordOauthCode: code,
-        discordRedirectURL: "http://localhost:8080/discord-auth"
+        discordRedirectURL: "https://bschallenger.xyz/discord-auth"
     })
 })
 ---

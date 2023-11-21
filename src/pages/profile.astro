@@ -2,14 +2,35 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import '../styles/styles.css';
+
+const token = Astro.cookies.get("token");
+
+const userRes = await fetch("https://bschallenger.xyz/api/identity", {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    headers: {
+        "Authorization": "Bearer " + token.value
+    }
+})
+const user = (await userRes.json());
+const needsToLink = !user.discordId?.length;
+console.log(needsToLink);
+console.log(user);
 ---
 
 <Layout title="Profile">
     <main>
         <div class="container">
-            <button class="linkDiscordButton">
-                Link discord
-            </button>
+            {
+                needsToLink ?
+                <button class="linkDiscordButton">
+                    Link discord
+                </button> :
+                <div class="discordLinked">
+                    Discord Linked!
+                </div>
+            }
         </div>
     </main>
 </Layout>
@@ -33,12 +54,13 @@ import '../styles/styles.css';
         gap: 15px;
     }
 
-    .linkDiscordButton
+    .linkDiscordButton, .discordLinked
     {
+        display: flex;
         border: none;
         margin: auto;
         width: 40%;
-        height: 15%;
+        height: 50px;
         border-radius: 10px;
         background-color: #3a3a3a;
 
@@ -48,7 +70,17 @@ import '../styles/styles.css';
         font-size: 20px;
         font-style: normal;
         font-weight: 400;
-        line-height: normal;
+
+        justify-content: center;
+        align-content: center;
+        vertical-align: center;
+        line-height: 50px;
+    }
+
+    .discordLinked
+    {
+        margin-top: 10px;
+        background-color: #3a3a3a33;
     }
 
     .linkDiscordButton:hover
@@ -61,6 +93,6 @@ import '../styles/styles.css';
 <script>
     const tgt = document.getElementsByClassName("linkDiscordButton")[0];
     tgt.addEventListener("click", () => {
-        document.location = "https://discord.com/api/oauth2/authorize?client_id=1163555058479272006&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fdiscord-auth&response_type=code&scope=identify";
+        document.location = "https://discord.com/api/oauth2/authorize?client_id=1163555058479272006&redirect_uri=https%3A%2F%2Fbschallenger.xyz%2Fdiscord-auth&response_type=code&scope=identify";
     });
 </script>
